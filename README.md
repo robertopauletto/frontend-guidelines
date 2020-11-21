@@ -1,13 +1,13 @@
-# Frontend Guidelines
+# Linee Guida per il Frontend
 
 ## HTML
 
-### Semantics
+### Semantica
 
-HTML5 provides us with lots of semantic elements aimed to describe precisely the content. Make sure you benefit from its rich vocabulary.
+HTML5 fornisce molti elementi semantici atti a descrivere con precisione il contenuto. Ci si assicuri di beneficiare del suo ricco vocabolario.
 
 ```html
-<!-- bad -->
+<!-- male -->
 <div id=main>
   <div class=article>
     <div class=header>
@@ -18,7 +18,7 @@ HTML5 provides us with lots of semantic elements aimed to describe precisely the
   </div>
 </div>
 
-<!-- good -->
+<!-- bene -->
 <main>
   <article>
     <header>
@@ -30,29 +30,28 @@ HTML5 provides us with lots of semantic elements aimed to describe precisely the
 </main>
 ```
 
-Make sure you understand the semantics of the elements you're using. It's worse to use a semantic
-element in a wrong way than staying neutral.
+Ci si assicuri di comprendere la semantica degli elementi che si stanno utilizzando. E' peggio utilizzare un elemento semantico nel modo sbagliato che rimanere neutrali.
 
 ```html
-<!-- bad -->
+<!-- male -->
 <h1>
   <figure>
     <img alt=Company src=logo.png>
   </figure>
 </h1>
 
-<!-- good -->
+<!-- bene -->
 <h1>
   <img alt=Company src=logo.png>
 </h1>
 ```
 
-### Brevity
+### Concisione
 
-Keep your code terse. Forget about your old XHTML habits.
+Mantenere il proprio codice conciso. Dimenticare le vecchie abitudini di XHTML.
 
 ```html
-<!-- bad -->
+<!-- male -->
 <!doctype html>
 <html lang=en>
   <head>
@@ -70,7 +69,7 @@ Keep your code terse. Forget about your old XHTML habits.
   </body>
 </html>
 
-<!-- good -->
+<!-- bene -->
 <!doctype html>
 <html lang=en>
   <meta charset=utf-8>
@@ -86,39 +85,36 @@ Keep your code terse. Forget about your old XHTML habits.
 </html>
 ```
 
-### Accessibility
+### Accessibilità
 
-Accessibility shouldn't be an afterthought. You don't have to be a WCAG expert to improve your
-website, you can start immediately by fixing the little things that make a huge difference, such as:
+La cura dell'accessibilità non dovrebbe essere un'aggiunta. Non occorre essere un esperto WCAG per migliorare il proprio sito web, si può partire subito sistemando quelle piccole cose che fanno una grande differenza tipo:
 
-* learning to use the `alt` attribute properly
-* making sure your links and buttons are marked as such (no `<div class=button>` atrocities)
-* not relying exclusively on colors to communicate information
-* explicitly labelling form controls
+* si impari a utilizzare propriamente l'attributo `alt` 
+* ci si assicuri che i propri collegamenti e bottoni siano marcati come tali (non atrocità tipo  `<div class=button>` )
+* non ci si affidi esclusivamente sui colori per comunicare informazioni
+* si etichettino esplicitamente i controlli nei form
 
 ```html
-<!-- bad -->
+<!-- male -->
 <h1><img alt=Logo src=logo.png></h1>
 
-<!-- good -->
+<!-- bene -->
 <h1><img alt=Company src=logo.png></h1>
 ```
 
-### Language & character encoding
+### Linguaggio e codifica caratteri
 
-While defining the language is optional, it's recommended to always declare
-it on the root element.
+Definire un linguaggio è opzionale, ma è raccomandato dichiararlo sempre nell'elemento radice.
 
-The HTML standard requires that pages use the UTF-8 character encoding.
-It has to be declared, and although it can be declared in the Content-Type HTTP header,
-it is recommended to always declare it at the document level.
+HTML standard richiede che le pagine utilizzino una codifica di carattere UTF-8.
+Deve essere dichiarato, sebbene possa essere dichiarato nll'intestazione HTTP Content-Type, è raccomandato dichiarlo sempre a livello di documento.
 
 ```html
-<!-- bad -->
+<!-- male -->
 <!doctype html>
 <title>Hello, world.</title>
 
-<!-- good -->
+<!-- bene -->
 <!doctype html>
 <html lang=en>
   <meta charset=utf-8>
@@ -126,23 +122,19 @@ it is recommended to always declare it at the document level.
 </html>
 ```
 
-### Performance
+### Prestazione
 
-Unless there's a valid reason for loading your scripts before your content, don't block the
-rendering of your page. If your style sheet is heavy, isolate the styles that are absolutely
-required initially and defer the loading of the secondary declarations in a separate style sheet.
-Two HTTP requests is significantly slower than one, but the perception of speed is the most
-important factor.
+A meno che ci sia una valida ragione per caricare i propri script prima del contenuto, non si blocchi iUnless there's a valid reason for loading your scripts before your content, non si blocchi l'interpretazione della pagina. Se il proprio foglio di stile è pesante, si isolino gli stili che sono assolutamente richiesti all'inizio e si differisca il caricamento delle dichiarazioni secondarie in un foglio di stile separato. Due richieste HTTP sono significativamente più lente di una sola, ma la percezione di velocità è il fattore più importante..
 
 ```html
-<!-- bad -->
+<!-- male -->
 <!doctype html>
 <meta charset=utf-8>
 <script src=analytics.js></script>
 <title>Hello, world.</title>
 <p>...</p>
 
-<!-- good -->
+<!-- bene -->
 <!doctype html>
 <meta charset=utf-8>
 <title>Hello, world.</title>
@@ -152,9 +144,9 @@ important factor.
 
 ## CSS
 
-### Semicolons
+### Punti e Virogla
 
-While the semicolon is technically a separator in CSS, always treat it as a terminator.
+Mentre il punto e virgola è tecnicamente un separatore in CSS, lo si tratti sempre come un terminatore.
 
 ```css
 /* bad */
@@ -168,11 +160,10 @@ div {
 }
 ```
 
-### Box model
+### Il modello Box
 
-The box model should ideally be the same for the entire document. A global
-`* { box-sizing: border-box; }` is fine, but don't change the default box model
-on specific elements if you can avoid it.
+Il modello box dovrebbe idealmente essere lo stesso per l'intero documento. Un 
+`* { box-sizing: border-box; }` globale va bene, ma non si modifichi il modello box predefinito su specifici elementi se si può evitare.
 
 ```css
 /* bad */
@@ -188,11 +179,9 @@ div {
 }
 ```
 
-### Flow
+### Flusso
 
-Don't change the default behavior of an element if you can avoid it. Keep elements in the
-natural document flow as much as you can. For example, removing the white-space below an
-image shouldn't make you change its default display:
+Non si modifichi il comportamento predefinito di un elemento se si può evitare. Si mantengano gli elementi nel normale flusso del documento il più possibile. Per esempio, la rimozione di una spaziatura sotto un'immagine non dovrebbe costringere a cambiare la sua visualizzazione predefinita:
 
 ```css
 /* bad */
@@ -206,7 +195,7 @@ img {
 }
 ```
 
-Similarly, don't take an element off the flow if you can avoid it.
+Alla stessa stregua, non si tolga un elemento dal flusso se si può evitare.
 
 ```css
 /* bad */
@@ -223,17 +212,14 @@ div {
 }
 ```
 
-### Positioning
+### Posizionamento
 
-There are many ways to position elements in CSS. Favor modern layout specifications
-such as Flexbox and Grid, and avoid removing elements from the normal document flow, for example
-with `position: absolute`.
+Ci sono molti modi per posizionare un alemento in CSS. Si preferiscano specifiche di disposizione moderne tipo  Flexbox e  Grid, e si eviti di rimuovere elementi dal normale flusso del documento, per esempio con 
+`position: absolute`.
 
-### Selectors
+### Selettori
 
-Minimize selectors tightly coupled to the DOM. Consider adding a class to the elements
-you want to match when your selector exceeds 3 structural pseudo-classes, descendant or
-sibling combinators.
+Si minimizzino i selettori fortemente accoppiati con il DOM. Si consideri l'aggiunta di una classe agli elementi che si vogliono far corrispondere quando il proprio selettore supera le 3 pseudo-classi strutturali, o combinazioni discendenti o alle stesso livello.
 
 ```css
 /* bad */
@@ -243,7 +229,7 @@ div:first-of-type :last-child > p ~ *
 div:first-of-type .info
 ```
 
-Avoid overloading your selectors when you don't need to.
+Si eviti il sovraccarico dei proprio selettori quando non necessario.
 
 ```css
 /* bad */
@@ -257,10 +243,10 @@ img[src$=svg], ul > li:first-child {
 }
 ```
 
-### Specificity
+### Specificità
 
-Don't make values and selectors hard to override. Minimize the use of `id`'s
-and avoid `!important`.
+Non si rendano valori e selettori difficili da sovrascrivere. Si minimizzi l'uso di  `id`'s
+e si eviti `!important`.
 
 ```css
 /* bad */
@@ -280,9 +266,9 @@ and avoid `!important`.
 }
 ```
 
-### Overriding
+### Sovrascrittura
 
-Overriding styles makes selectors and debugging harder. Avoid it when possible.
+La sovrascrittura degli stili rende i selettori e il debug più difficile. Si eviti quanto possibile.
 
 ```css
 /* bad */
@@ -299,9 +285,9 @@ li + li {
 }
 ```
 
-### Inheritance
+### Ereditarietà
 
-Don't duplicate style declarations that can be inherited.
+Non si duplichino le dichiarazioni di stile che possono essere ereditate.
 
 ```css
 /* bad */
@@ -315,10 +301,9 @@ div {
 }
 ```
 
-### Brevity
+### Brevità
 
-Keep your code terse. Use shorthand properties and avoid using multiple properties when
-it's not needed.
+Si mantenga il proprio codice conciso. Si usino scorciatoie di proprietà e si eviti di usare proprietà multiple quando non necessario.
 
 ```css
 /* bad */
@@ -342,7 +327,7 @@ div {
 
 ### Language
 
-Prefer English over math.
+Si preferisce l'inglese al posto della matematica.
 
 ```css
 /* bad */
@@ -356,10 +341,9 @@ Prefer English over math.
 }
 ```
 
-### Vendor prefixes
+### Prefissi dei Venditori
 
-Kill obsolete vendor prefixes aggressively. If you need to use them, insert them before the
-standard property.
+Ci si sbarazzi aggressivamente dei prefissi dei fornitori. Se si devono usare, si inseriscano prima delle proprietà standard.
 
 ```css
 /* bad */
@@ -382,10 +366,10 @@ div {
 }
 ```
 
-### Animations
+### Animazioni
 
-Favor transitions over animations. Avoid animating other properties than
-`opacity` and `transform`.
+Si preferiscano le transizioni rispetto alle animazioni. Si eviti di anomare proprietà diverse da 
+`opacity` e `transform`.
 
 ```css
 /* bad */
@@ -405,10 +389,9 @@ div:hover {
 }
 ```
 
-### Units
+### Unità
 
-Use unitless values when you can. Favor `rem` if you use relative units. Prefer seconds over
-milliseconds.
+Si usino valori che rappresentano valori di unità quando possibile. Si preferisca`rem` se si usano unità relative. Si preferiscano i secondi rispetto ai millisecondi.
 
 ```css
 /* bad */
@@ -428,9 +411,9 @@ div {
 }
 ```
 
-### Colors
+### Colori
 
-If you need transparency, use `rgba`. Otherwise, always use the hexadecimal format.
+Se serve trasparenza, si usi `rgba`. Altrimenti si usi sempre il formato esadecimale.
 
 ```css
 /* bad */
@@ -444,9 +427,9 @@ div {
 }
 ```
 
-### Drawing
+### Disegno
 
-Avoid HTTP requests when the resources are easily replicable with CSS.
+Si evitino le richieste HTTP quando le risorse sono facilmente replicabili con CSS.
 
 ```css
 /* bad */
@@ -465,9 +448,9 @@ div::before {
 }
 ```
 
-### Hacks
+### Forzature
 
-Don't use them.
+Non si usino.
 
 ```css
 /* bad */
@@ -485,11 +468,9 @@ div {
 
 ## JavaScript
 
-### Performance
+### Prestazioni
 
-Favor readability, correctness and expressiveness over performance. JavaScript will basically never
-be your performance bottleneck. Optimize things like image compression, network access and DOM
-reflows instead. If you remember just one guideline from this document, choose this one.
+Si preferiscano leggibilità, correttezza ed espressività rispetto alle prestazioni. Javascript non sarà praticamente mai il collo di bottiglia delle proprie prestazioni. Si ottimizzino cose tipo la compressione immagine, l'accesso alla rete e il riflusso del DOM. Se ci si deve ricordare solo una linea guida di questo documento, si scelga questa.
 
 ```javascript
 // bad (albeit way faster)
@@ -511,9 +492,9 @@ const square = n => n * n;
 const result = arr.filter(isEven).map(square);
 ```
 
-### Statelessness
+### Mancanza di Stato
 
-Try to keep your functions pure. All functions should ideally produce no side-effects, use no outside data and return new objects instead of mutating existing ones.
+Si cerchi di mantenere le proprie funzioni pure. Tutte le funzioni idalmente non dovrebbero produrre effetti collaterali, non usare dati esterni e ritornare nuovi oggeti invece di modificare quelli esistenti.
 
 ```javascript
 // bad
@@ -525,9 +506,9 @@ const merge = (...sources) => Object.assign({}, ...sources);
 merge({ foo: "foo" }, { bar: "bar" }); // => { foo: "foo", bar: "bar" }
 ```
 
-### Natives
+### Nativi
 
-Rely on native methods as much as possible.
+Affidarsi ai metodi nativi il più possibile.
 
 ```javascript
 // bad
@@ -539,9 +520,9 @@ const toArray = (() =>
 )();
 ```
 
-### Coercion
+### Coercizione
 
-Embrace implicit coercion when it makes sense. Avoid it otherwise. Don't cargo-cult.
+Adottare la coercizione implicita quando ha senso. Si eviti altrimenti.
 
 ```javascript
 // bad
@@ -551,9 +532,9 @@ if (x === undefined || x === null) { ... }
 if (x == undefined) { ... }
 ```
 
-### Loops
+### Cicli
 
-Don't use loops as they force you to use mutable objects. Rely on `array.prototype` methods.
+Non si usino cicli che forzano l'utilizzo di oggetti mutabili. Si faccia affidamento ai metodi  `array.prototype` 
 
 ```javascript
 // bad
@@ -574,7 +555,7 @@ const sum = arr =>
 
 sum([1, 2, 3]); // => 6
 ```
-If you can't, or if using `array.prototype` methods is arguably abusive, use recursion.
+Se non è possibile oppure usando  `array.prototype` non ha logicamente senso, si usi la ricorsione.
 
 ```javascript
 // bad
@@ -601,14 +582,14 @@ const createDivs = howMany => {
 createDivs(5);
 ```
 
-Here's a [generic loop function](https://gist.github.com/bendc/6cb2db4a44ec30208e86) making recursion easier to use.
+Ecco una [funzione generica di ciclo](https://gist.github.com/bendc/6cb2db4a44ec30208e86) che facilita l'utilizzo della ricorsione.
 
-### Arguments
+### Argumenti
 
-Forget about the `arguments` object. The rest parameter is always a better option because:
+Dimenticarsi dell'oggetto `arguments`. Il parametro rest è sempre una migliore opzione in quanto:
 
-1. it's named, so it gives you a better idea of the arguments the function is expecting
-2. it's a real array, which makes it easier to use.
+1. è denominato, quindi fornisce una migliore idea di quali argomenti una funzione si aspetti
+2. è un vero array, il che ne facilita l'uso.
 
 ```javascript
 // bad
@@ -890,3 +871,5 @@ compact(["foo", 0]);
 unique(["foo", "foo"]);
 union(["foo"], ["bar"], ["foo"]);
 ```
+
+*[WCAG]: Web Content Accessibility Guidelines (Linee Guida per Accessibilità di Contenuti Web)
